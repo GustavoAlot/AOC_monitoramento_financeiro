@@ -27,7 +27,7 @@ Atualmente, esta é a **primeira versão do projeto** e está **hospedada em ser
 
 💡 **Integração com WhatsApp** → O usuário poderá adicionar transações enviando mensagens para um bot, que usará **IA para identificar e categorizar automaticamente os gastos**.  
 📊 **Mais análises e gráficos** → Implementação de relatórios mais detalhados sobre as transações, ajudando o usuário a melhorar seu planejamento financeiro.  
-📱 **Versão Mobile** → Uma versão aprimorada para dispositivos móveis, garantindo melhor experiência no celular.  
+📱 **Versão Mobile** → Uma versão aprimorada para dispositivos móveis, garantindo melhor experiência no celular.
 
 ---
 
@@ -50,14 +50,7 @@ Atualmente, esta é a **primeira versão do projeto** e está **hospedada em ser
 
 ## 🌍 Demonstração Online
 
-🔗 **Frontend:** [https://meu-projeto.vercel.app](https://meu-projeto.vercel.app)  
-🔗 **Backend:** [https://backaoc.onrender.com](https://backaoc.onrender.com)
+🔗 **AOC.io:** https://frontaoc.vercel.app/login  
 
----
 
-## 🚀 Como Rodar o Projeto Localmente
 
-### **1️⃣ Clonar o Repositório**
-```bash
-git clone https://github.com/seu-usuario/ALOT-OF-CASH.git
-cd ALOT-OF-CASH
