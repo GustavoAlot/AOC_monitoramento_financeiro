@@ -9,7 +9,7 @@
 Este projeto começou como um **trabalho de faculdade** nos primeiros períodos do curso, desenvolvido em **C++ utilizando arquivos `.txt`** para armazenar os dados.  
 Com o tempo, e adquirindo mais experiência com **Node.js e React**, decidi **modernizar e transformar essa ideia inicial** em um aplicativo web completo, com um backend robusto e um frontend intuitivo.
 
-Atualmente, esta é a **primeira versão do projeto** e está **hospedada em serviços gratuitos**, então **tenha paciência com a velocidade**, pois algumas requisições podem levar um tempo para "acordar" os servidores.
+Atualmente, esta é a **primeira versão do projeto** e está **hospedada em serviços gratuitos**, então **tenha paciência com a velocidade**, pois algumas requisições podem levar um tempo para "acordar" os servidores (cerca de 2 minutos).
 
 ---
 
