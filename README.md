@@ -4,9 +4,11 @@ Aplicativo de finanças pessoais para acompanhar o mês, organizar despesas de c
 
 O **AOC** é um projeto pessoal que faz parte do meu portfólio profissional. Ele reúne registros pelo aplicativo, integração com Telegram e sincronização bancária via Pluggy, com uma demonstração pública e um ambiente pessoal para as conexões reais.
 
-[Demonstração](https://frontaoc.vercel.app/login) · [Backend](https://github.com/GustavoAlot/AOC_new_bacck) · [Executar localmente](#executar-localmente) · [Documentação](#documentação)
+[Demonstração](https://frontaoc.vercel.app/login) · [Frontend](https://github.com/GustavoAlot/alotofcash) · [Backend](https://github.com/GustavoAlot/AOC_new_bacck) · [Documentação](#documentação)
 
-![Visão geral do AOC com resumo mensal, atividade recente e distribuição dos gastos. Dados fictícios.](public/showcase/overview-desktop.jpg)
+Este repositório reúne a apresentação do projeto e os prints. O código da aplicação e as instruções técnicas ficam nos repositórios de frontend e backend indicados acima.
+
+![Visão geral do AOC com resumo mensal, atividade recente e distribuição dos gastos. Dados fictícios.](assets/showcase/overview-desktop.jpg)
 
 ## De um trabalho de faculdade a um projeto pessoal
 
@@ -84,31 +86,31 @@ Capturas da aplicação com um banco de testes isolado e dados fictícios.
 
 Resumo mensal, filtros, categorias e identificação da origem de cada lançamento.
 
-![Transações do AOC com dados fictícios, categorias e identificação de origem.](public/showcase/transactions-desktop.jpg)
+![Transações do AOC com dados fictícios, categorias e identificação de origem.](assets/showcase/transactions-desktop.jpg)
 
 ### Integrações
 
 Banco demonstrativo e explicação da restrição do Telegram na versão pública.
 
-![Integrações do AOC em demonstração, sem conexão com contas reais.](public/showcase/integrations-desktop.jpg)
+![Integrações do AOC em demonstração, sem conexão com contas reais.](assets/showcase/integrations-desktop.jpg)
 
 ### Visão geral dos investimentos
 
 Indicadores da carteira, evolução do patrimônio e distribuição por classe.
 
-![Carteira fictícia com patrimônio, custo, ganho e gráficos de evolução e distribuição.](public/showcase/investments-desktop.jpg)
+![Carteira fictícia com patrimônio, custo, ganho e gráficos de evolução e distribuição.](assets/showcase/investments-desktop.jpg)
 
 ### Meus ativos
 
 Posições com quantidades, preços e ganho ou perda quando o custo pode ser determinado.
 
-![Ativos fictícios com quantidade, preço médio, preço atual e valores da posição.](public/showcase/assets-desktop.jpg)
+![Ativos fictícios com quantidade, preço médio, preço atual e valores da posição.](assets/showcase/assets-desktop.jpg)
 
 ### Histórico de investimentos
 
 Operações e rendimentos disponíveis, com filtros e paginação.
 
-![Histórico fictício com aplicações, rendimentos e valores por operação.](public/showcase/history-desktop.jpg)
+![Histórico fictício com aplicações, rendimentos e valores por operação.](assets/showcase/history-desktop.jpg)
 
 </details>
 
@@ -116,9 +118,9 @@ Operações e rendimentos disponíveis, com filtros e paginação.
 <summary><strong>Experiência no celular</strong></summary>
 
 <p>
-  <img src="public/showcase/overview-mobile.jpg" alt="Painel mensal do AOC no celular com dados fictícios." width="250" />
-  <img src="public/showcase/investments-mobile.jpg" alt="Gráficos de evolução e distribuição de uma carteira fictícia no celular." width="250" />
-  <img src="public/showcase/assets-mobile.jpg" alt="Posições fictícias da carteira no celular." width="250" />
+  <img src="assets/showcase/overview-mobile.jpg" alt="Painel mensal do AOC no celular com dados fictícios." width="250" />
+  <img src="assets/showcase/investments-mobile.jpg" alt="Gráficos de evolução e distribuição de uma carteira fictícia no celular." width="250" />
+  <img src="assets/showcase/assets-mobile.jpg" alt="Posições fictícias da carteira no celular." width="250" />
 </p>
 
 </details>
@@ -148,22 +150,32 @@ AOC/
 └── AOC_new_bacck/    # API e bot Telegram
 ```
 
-Neste repositório, copie `.env.example` para `.env` e configure a URL da API e os dados públicos do Firebase. Depois:
+Clone os repositórios de código dentro da pasta `AOC`; este repositório de apresentação não executa o aplicativo:
 
 ```powershell
+git clone https://github.com/GustavoAlot/alotofcash.git
+git clone https://github.com/GustavoAlot/AOC_new_bacck.git
+```
+
+Na pasta `alotofcash`, copie `.env.example` para `.env` e configure a URL da API e os dados públicos do Firebase. Depois:
+
+```powershell
+cd alotofcash
 npm ci
 npm start
 ```
 
-O frontend abre em **http://localhost:3000**. A API deve estar em execução, com suas dependências e variáveis privadas configuradas; siga o [README do backend](https://github.com/GustavoAlot/AOC_new_bacck#readme). O bot é um processo separado e só é necessário para usar a integração Telegram.
+O frontend abre em **http://localhost:3000**. A API deve estar em execução, com suas dependências e variáveis privadas configuradas; siga o [README do backend](https://github.com/GustavoAlot/AOC_new_bacck/blob/366a2f5535cc7e728f90e5d2e42f9b46152b420c/README.md). O bot é um processo separado e só é necessário para usar a integração Telegram.
 
 As variáveis `VITE_*` entram no bundle público. Credenciais Pluggy, token do Telegram, segredo JWT e chaves privadas pertencem exclusivamente ao backend.
 
-Para publicar a demonstração, use `VITE_PUBLIC_DEMO=true` no build do frontend e `AOC_PUBLIC_DEMO=true` na API, com uma base de dados exclusiva. A área autenticada precisa da API e do MongoDB online. O roteiro está no [guia de publicação](docs/portfolio.md).
+Para publicar a demonstração, use `VITE_PUBLIC_DEMO=true` no build do frontend e `AOC_PUBLIC_DEMO=true` na API, com uma base de dados exclusiva. A área autenticada precisa da API e do MongoDB online. O roteiro está no [guia de publicação](https://github.com/GustavoAlot/alotofcash/blob/8548cb4050095dc1211f61cb4fd476cf76f8f36e/docs/portfolio.md).
 
 ## Qualidade e documentação
 
-Os testes cobrem regras financeiras, autorização, isolamento entre usuários, modos real e sandbox, integrações simuladas, paginação e navegação em desktop e celular. Os testes de integração e navegador usam bancos temporários e dados fictícios; não acessam o banco pessoal.
+Os testes da aplicação cobrem regras financeiras, autorização, isolamento entre usuários, modos real e sandbox, integrações simuladas, paginação e navegação em desktop e celular. Os testes de integração e navegador usam bancos temporários e dados fictícios; não acessam o banco pessoal.
+
+Os comandos abaixo devem ser executados na pasta do frontend, não neste repositório de apresentação:
 
 ```powershell
 npm test
@@ -173,17 +185,17 @@ npm run format:check
 npm run build
 ```
 
-Para testes de navegador, configuração do ambiente e geração dos prints, consulte o [guia de desenvolvimento](docs/development.md).
+Para testes de navegador, configuração do ambiente e geração dos prints, consulte o [guia de desenvolvimento](https://github.com/GustavoAlot/alotofcash/blob/8548cb4050095dc1211f61cb4fd476cf76f8f36e/README.md).
 
 ### Documentação
 
-- [Desenvolvimento do frontend: estrutura, rotas, testes e build](docs/development.md)
-- [Demonstração pública, publicação e atualização dos prints](docs/portfolio.md)
-- [Transações, categorias e paginação](docs/transactions.md)
-- [Planejamento das despesas de cartão](docs/card-billing.md)
-- [Fluxos da integração Open Finance](docs/open-finance-interface.md)
-- [Carteira e cálculos de investimentos](docs/investments.md)
-- [Contexto para manutenção com agentes de IA](AGENTS.md)
+- [Desenvolvimento do frontend: estrutura, rotas, testes e build](https://github.com/GustavoAlot/alotofcash/blob/8548cb4050095dc1211f61cb4fd476cf76f8f36e/README.md)
+- [Demonstração pública, publicação e atualização dos prints](https://github.com/GustavoAlot/alotofcash/blob/8548cb4050095dc1211f61cb4fd476cf76f8f36e/docs/portfolio.md)
+- [Transações, categorias e paginação](https://github.com/GustavoAlot/alotofcash/blob/8548cb4050095dc1211f61cb4fd476cf76f8f36e/docs/transactions.md)
+- [Planejamento das despesas de cartão](https://github.com/GustavoAlot/alotofcash/blob/8548cb4050095dc1211f61cb4fd476cf76f8f36e/docs/card-billing.md)
+- [Fluxos da integração Open Finance](https://github.com/GustavoAlot/alotofcash/blob/8548cb4050095dc1211f61cb4fd476cf76f8f36e/docs/open-finance-interface.md)
+- [Carteira e cálculos de investimentos](https://github.com/GustavoAlot/alotofcash/blob/8548cb4050095dc1211f61cb4fd476cf76f8f36e/docs/investments.md)
+- [Contexto para manutenção com agentes de IA](https://github.com/GustavoAlot/alotofcash/blob/8548cb4050095dc1211f61cb4fd476cf76f8f36e/AGENTS.md)
 - [Backend: API, persistência, integrações e operação](https://github.com/GustavoAlot/AOC_new_bacck)
 
 ## Evolução do projeto
