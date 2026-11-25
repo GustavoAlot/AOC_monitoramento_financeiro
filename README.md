@@ -1,56 +1,193 @@
 # 💰 ALOT OF CASH
 
-🚀 **ALOT OF CASH** é um aplicativo web para **monitoramento financeiro pessoal**, permitindo que os usuários acompanhem seus gastos, ganhos e investimentos com dashboards interativos.
+Aplicativo de finanças pessoais para acompanhar o mês, organizar despesas de cartão e explorar uma carteira de investimentos em um só lugar.
 
----
+O **AOC** é um projeto pessoal que faz parte do meu portfólio profissional. Ele reúne registros pelo aplicativo, integração com Telegram e sincronização bancária via Pluggy, com uma demonstração pública e um ambiente pessoal para as conexões reais.
 
-## 🏁 Origem do Projeto
+[Demonstração](https://frontaoc.vercel.app/login) · [Backend](https://github.com/GustavoAlot/AOC_new_bacck) · [Executar localmente](#executar-localmente) · [Documentação](#documentação)
 
-Este projeto começou como um **trabalho de faculdade** nos primeiros períodos do curso, desenvolvido em **C++ utilizando arquivos `.txt`** para armazenar os dados.  
-Com o tempo, e adquirindo mais experiência com **Node.js e React**, decidi **modernizar e transformar essa ideia inicial** em um aplicativo web completo, com um backend robusto e um frontend intuitivo.
+![Visão geral do AOC com resumo mensal, atividade recente e distribuição dos gastos. Dados fictícios.](public/showcase/overview-desktop.jpg)
 
-Atualmente, esta é a **primeira versão do projeto** e está **hospedada em serviços gratuitos**, então **tenha paciência com a velocidade**, pois algumas requisições podem levar um tempo para "acordar" os servidores (cerca de 2 minutos).
+## De um trabalho de faculdade a um projeto pessoal
 
----
+O projeto começou nos primeiros períodos da faculdade, em **C++**, usando arquivos **`.txt`** para armazenar os dados. A ideia era simples: registrar entradas e saídas para entender melhor o próprio dinheiro.
 
-## ✨ Funcionalidades Atuais
+Com o aprendizado em **Node.js e React**, transformei essa primeira versão em uma aplicação web. Desde então, o AOC passou a incorporar autenticação, persistência em MongoDB, integração bancária, bot no Telegram e uma área dedicada a investimentos.
 
-✅ **Registro de despesas e receitas** com categorias definidas  
-✅ **Dashboard interativo** para visualização dos dados financeiros  
-✅ **Autenticação via Firebase**  
-✅ **Banco de dados na nuvem com MongoDB Atlas**  
-✅ **Backend em Node.js (Render) e Frontend em React (Vercel)**  
+Hoje, ele continua sendo um espaço para desenvolver e demonstrar minhas habilidades, trabalhando tanto na interface quanto nas regras de negócio, integrações, testes e documentação.
 
----
+## Demonstração pública e uso pessoal
 
-## 🔮 Próximas Atualizações
+**A versão pública é uma demonstração de portfólio.** Você pode entrar com Google, registrar movimentações e experimentar os recursos disponíveis. As conexões reais de banco, cartão, investimentos e Telegram ficam no meu ambiente pessoal local.
 
-💡 **Integração com WhatsApp** → O usuário poderá adicionar transações enviando mensagens para um bot, que usará **IA para identificar e categorizar automaticamente os gastos**.  
-📊 **Mais análises e gráficos** → Implementação de relatórios mais detalhados sobre as transações, ajudando o usuário a melhorar seu planejamento financeiro.  
-📱 **Versão Mobile** → Uma versão aprimorada para dispositivos móveis, garantindo melhor experiência no celular.
+Manter essas integrações abertas ao público envolve custos que este projeto não comporta. Por isso, a demonstração usa dados bancários fictícios e não solicita acesso à conta real do visitante.
 
----
+| Recurso                               | Demonstração pública          | Ambiente pessoal local                     |
+| ------------------------------------- | ----------------------------- | ------------------------------------------ |
+| Login Google e registros pelo app     | Disponível                    | Disponível                                 |
+| Painel mensal, categorias e listagens | Disponível                    | Disponível                                 |
+| Banco e cartão via Open Finance       | Sandbox, quando configurado   | Conexão real restrita à conta proprietária |
+| Carteira de investimentos             | Simulação com dados fictícios | Dados da instituição conectada             |
+| Bot Telegram                          | Bloqueado                     | Disponível com configuração própria        |
 
-## 🛠️ Tecnologias Utilizadas
+A restrição das integrações é aplicada pelo **backend**, inclusive para a conta proprietária no modo público.
 
-### **Frontend**
-- React.js + Vite
-- Styled Components / CSS puro
-- Fetch API para integração com backend
-- Vercel para hospedagem
+> A disponibilidade depende da hospedagem e dos serviços utilizados, e os recursos podem variar conforme a versão publicada. Prefira dados fictícios ao experimentar e não use a demonstração como seu único controle financeiro. Todos os prints deste README mostram dados fictícios.
 
-### **Backend**
-- Node.js + Express.js
-- MongoDB Atlas + Mongoose
-- Firebase Authentication para login seguro
-- JWT para autenticação de usuários
-- Render para hospedagem do backend
+## Funcionalidades
 
----
+### Planejamento financeiro
 
-## 🌍 Demonstração Online
+- Registro de **despesas, receitas e lançamentos de investimento**, com categorias e formas de pagamento.
+- Visão geral com receitas, despesas, investimentos e resultado do mês.
+- Atividade recente e distribuição dos gastos por categoria.
+- Filtros por período, paginação e resumo do mês completo nas transações.
+- Edição de categorias de despesas e receitas, preservada nas próximas sincronizações bancárias.
+- Identificação da origem de cada registro: **App, Telegram, Banco ou Banco demo**.
 
-🔗 **AOC.io:** https://frontaoc.vercel.app/login  
+### Cartão e Open Finance
 
+- Importação das movimentações disponibilizadas pela instituição conectada via **Pluggy**.
+- Despesas de cartão organizadas pelo **mês do vencimento da fatura**, preservando a data original do lançamento.
+- Configuração de fechamento e vencimento para prever o mês de pagamento.
+- Identificação de parcelas, pendências e vencimentos estimados.
+- Pagamentos de fatura identificados ficam fora das receitas e despesas, evitando contar novamente as compras já registradas.
+- Registros bancários protegidos contra exclusão, com histórico preservado ao pausar a sincronização.
 
+A sincronização pessoal pelo Meu Pluggy segue a atualização diária disponibilizada pelo provedor; não é uma integração em tempo real. Depois da importação, os registros ficam salvos no MongoDB, e consultar as telas não exige uma nova chamada à Pluggy.
 
+### Carteira de investimentos
+
+- Patrimônio bruto, custo das posições e ganho ou perda quando existem dados suficientes.
+- Distribuição da carteira por tipo de investimento ou por ativo.
+- Evolução do patrimônio a partir dos valores coletados nas sincronizações.
+- Listagem de ativos com quantidade, valor unitário, preço médio e detalhes da posição, conforme os dados disponíveis.
+- Histórico de operações e rendimentos, com filtros por ano, tipo de operação e paginação.
+- Importação de até **365 dias de operações**, conforme o histórico disponibilizado pela instituição.
+
+O AOC não inventa valores ausentes: preço médio e ganho só aparecem quando o custo informado é utilizável ou o histórico permite reconstruir a posição. Ganho na posição não equivale à rentabilidade da carteira no período, e o histórico de operações não é tratado como uma série completa de valores antigos do patrimônio.
+
+### Telegram e experiência de uso
+
+No ambiente pessoal, o bot permite registrar despesas, receitas e investimentos em uma conversa privada, com confirmação antes de salvar. Os registros aparecem nas mesmas listagens do aplicativo.
+
+A interface é responsiva, com navegação adaptada ao celular, tema escuro, tipografia Geist, tooltips acessíveis e animações que respeitam a preferência por movimento reduzido. A landing apresenta uma galeria navegável das telas, com prints para desktop e mobile.
+
+## Conheça as telas
+
+Capturas da aplicação com um banco de testes isolado e dados fictícios.
+
+<details>
+<summary><strong>Transações, integrações e carteira de investimentos</strong></summary>
+
+### Transações
+
+Resumo mensal, filtros, categorias e identificação da origem de cada lançamento.
+
+![Transações do AOC com dados fictícios, categorias e identificação de origem.](public/showcase/transactions-desktop.jpg)
+
+### Integrações
+
+Banco demonstrativo e explicação da restrição do Telegram na versão pública.
+
+![Integrações do AOC em demonstração, sem conexão com contas reais.](public/showcase/integrations-desktop.jpg)
+
+### Visão geral dos investimentos
+
+Indicadores da carteira, evolução do patrimônio e distribuição por classe.
+
+![Carteira fictícia com patrimônio, custo, ganho e gráficos de evolução e distribuição.](public/showcase/investments-desktop.jpg)
+
+### Meus ativos
+
+Posições com quantidades, preços e ganho ou perda quando o custo pode ser determinado.
+
+![Ativos fictícios com quantidade, preço médio, preço atual e valores da posição.](public/showcase/assets-desktop.jpg)
+
+### Histórico de investimentos
+
+Operações e rendimentos disponíveis, com filtros e paginação.
+
+![Histórico fictício com aplicações, rendimentos e valores por operação.](public/showcase/history-desktop.jpg)
+
+</details>
+
+<details>
+<summary><strong>Experiência no celular</strong></summary>
+
+<p>
+  <img src="public/showcase/overview-mobile.jpg" alt="Painel mensal do AOC no celular com dados fictícios." width="250" />
+  <img src="public/showcase/investments-mobile.jpg" alt="Gráficos de evolução e distribuição de uma carteira fictícia no celular." width="250" />
+  <img src="public/showcase/assets-mobile.jpg" alt="Posições fictícias da carteira no celular." width="250" />
+</p>
+
+</details>
+
+## Tecnologias
+
+| Área         | Tecnologias                                                                                  |
+| ------------ | -------------------------------------------------------------------------------------------- |
+| Frontend     | React 18, Vite 7, React Router, Tailwind CSS 4, Base UI/shadcn, Lucide e Axios               |
+| Backend      | Node.js 24, Express 4 e Mongoose                                                             |
+| Persistência | MongoDB                                                                                      |
+| Autenticação | Login Google via Firebase Authentication e sessão da API com JWT                             |
+| Integrações  | Pluggy para Open Finance e grammY para o bot Telegram                                        |
+| Qualidade    | Vitest, Testing Library, Playwright, testes nativos do Node.js, Supertest, ESLint e Prettier |
+
+O frontend e o backend possuem repositórios independentes. A API concentra autenticação, autorização, validações, filtros, paginação e cálculos financeiros; o frontend cuida da apresentação e da interação.
+
+## Executar localmente
+
+Requisitos: **Node.js 24**, MongoDB disponível e um projeto Firebase com login Google configurado. Docker é opcional.
+
+Organize os repositórios em pastas irmãs:
+
+```text
+AOC/
+├── alotofcash/       # Frontend
+└── AOC_new_bacck/    # API e bot Telegram
+```
+
+Neste repositório, copie `.env.example` para `.env` e configure a URL da API e os dados públicos do Firebase. Depois:
+
+```powershell
+npm ci
+npm start
+```
+
+O frontend abre em **http://localhost:3000**. A API deve estar em execução, com suas dependências e variáveis privadas configuradas; siga o [README do backend](https://github.com/GustavoAlot/AOC_new_bacck#readme). O bot é um processo separado e só é necessário para usar a integração Telegram.
+
+As variáveis `VITE_*` entram no bundle público. Credenciais Pluggy, token do Telegram, segredo JWT e chaves privadas pertencem exclusivamente ao backend.
+
+Para publicar a demonstração, use `VITE_PUBLIC_DEMO=true` no build do frontend e `AOC_PUBLIC_DEMO=true` na API, com uma base de dados exclusiva. A área autenticada precisa da API e do MongoDB online. O roteiro está no [guia de publicação](docs/portfolio.md).
+
+## Qualidade e documentação
+
+Os testes cobrem regras financeiras, autorização, isolamento entre usuários, modos real e sandbox, integrações simuladas, paginação e navegação em desktop e celular. Os testes de integração e navegador usam bancos temporários e dados fictícios; não acessam o banco pessoal.
+
+```powershell
+npm test
+npm run test:coverage
+npm run lint
+npm run format:check
+npm run build
+```
+
+Para testes de navegador, configuração do ambiente e geração dos prints, consulte o [guia de desenvolvimento](docs/development.md).
+
+### Documentação
+
+- [Desenvolvimento do frontend: estrutura, rotas, testes e build](docs/development.md)
+- [Demonstração pública, publicação e atualização dos prints](docs/portfolio.md)
+- [Transações, categorias e paginação](docs/transactions.md)
+- [Planejamento das despesas de cartão](docs/card-billing.md)
+- [Fluxos da integração Open Finance](docs/open-finance-interface.md)
+- [Carteira e cálculos de investimentos](docs/investments.md)
+- [Contexto para manutenção com agentes de IA](AGENTS.md)
+- [Backend: API, persistência, integrações e operação](https://github.com/GustavoAlot/AOC_new_bacck)
+
+## Evolução do projeto
+
+Possíveis próximos passos incluem conciliação entre lançamentos manuais e bancários, ampliação das análises quando houver dados confiáveis e melhorias contínuas de usabilidade e acessibilidade.
+
+Essas ideias não representam recursos já implementados nem um compromisso de prazo. O foco continua sendo evoluir um aplicativo útil no meu dia a dia e um projeto de portfólio bem documentado.
