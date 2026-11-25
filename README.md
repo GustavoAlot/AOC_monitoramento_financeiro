@@ -6,7 +6,7 @@ O **AOC** é um projeto pessoal que faz parte do meu portfólio profissional. El
 
 [Demonstração](https://frontaoc.vercel.app/login) · [Frontend](https://github.com/GustavoAlot/alotofcash) · [Backend](https://github.com/GustavoAlot/AOC_new_bacck) · [Documentação](#documentação)
 
-Este repositório reúne a apresentação do projeto e os prints. O código da aplicação e as instruções técnicas ficam nos repositórios de frontend e backend indicados acima.
+Este repositório reúne a apresentação do projeto e os prints. O código e a documentação técnica ficam nos repositórios de frontend e backend indicados acima.
 
 ![Visão geral do AOC com resumo mensal, atividade recente e distribuição dos gastos. Dados fictícios.](assets/showcase/overview-desktop.jpg)
 
@@ -30,7 +30,7 @@ Manter essas integrações abertas ao público envolve custos que este projeto n
 | Painel mensal, categorias e listagens | Disponível                    | Disponível                                 |
 | Banco e cartão via Open Finance       | Sandbox, quando configurado   | Conexão real restrita à conta proprietária |
 | Carteira de investimentos             | Simulação com dados fictícios | Dados da instituição conectada             |
-| Bot Telegram                          | Bloqueado                     | Disponível com configuração própria        |
+| Bot Telegram                          | Bloqueado                     | Uso pessoal integrado às mesmas listagens  |
 
 A restrição das integrações é aplicada pelo **backend**, inclusive para a conta proprietária no modo público.
 
@@ -138,56 +138,11 @@ Operações e rendimentos disponíveis, com filtros e paginação.
 
 O frontend e o backend possuem repositórios independentes. A API concentra autenticação, autorização, validações, filtros, paginação e cálculos financeiros; o frontend cuida da apresentação e da interação.
 
-## Executar localmente
-
-Requisitos: **Node.js 24**, MongoDB disponível e um projeto Firebase com login Google configurado. Docker é opcional.
-
-Organize os repositórios em pastas irmãs:
-
-```text
-AOC/
-├── alotofcash/       # Frontend
-└── AOC_new_bacck/    # API e bot Telegram
-```
-
-Clone os repositórios de código dentro da pasta `AOC`; este repositório de apresentação não executa o aplicativo:
-
-```powershell
-git clone https://github.com/GustavoAlot/alotofcash.git
-git clone https://github.com/GustavoAlot/AOC_new_bacck.git
-```
-
-Na pasta `alotofcash`, copie `.env.example` para `.env` e configure a URL da API e os dados públicos do Firebase. Depois:
-
-```powershell
-cd alotofcash
-npm ci
-npm start
-```
-
-O frontend abre em **http://localhost:3000**. A API deve estar em execução, com suas dependências e variáveis privadas configuradas; siga o [README do backend](https://github.com/GustavoAlot/AOC_new_bacck/blob/366a2f5535cc7e728f90e5d2e42f9b46152b420c/README.md). O bot é um processo separado e só é necessário para usar a integração Telegram.
-
-As variáveis `VITE_*` entram no bundle público. Credenciais Pluggy, token do Telegram, segredo JWT e chaves privadas pertencem exclusivamente ao backend.
-
-Para publicar a demonstração, use `VITE_PUBLIC_DEMO=true` no build do frontend e `AOC_PUBLIC_DEMO=true` na API, com uma base de dados exclusiva. A área autenticada precisa da API e do MongoDB online. O roteiro está no [guia de publicação](https://github.com/GustavoAlot/alotofcash/blob/8548cb4050095dc1211f61cb4fd476cf76f8f36e/docs/portfolio.md).
-
-## Qualidade e documentação
+## Qualidade
 
 Os testes da aplicação cobrem regras financeiras, autorização, isolamento entre usuários, modos real e sandbox, integrações simuladas, paginação e navegação em desktop e celular. Os testes de integração e navegador usam bancos temporários e dados fictícios; não acessam o banco pessoal.
 
-Os comandos abaixo devem ser executados na pasta do frontend, não neste repositório de apresentação:
-
-```powershell
-npm test
-npm run test:coverage
-npm run lint
-npm run format:check
-npm run build
-```
-
-Para testes de navegador, configuração do ambiente e geração dos prints, consulte o [guia de desenvolvimento](https://github.com/GustavoAlot/alotofcash/blob/8548cb4050095dc1211f61cb4fd476cf76f8f36e/README.md).
-
-### Documentação
+## Documentação
 
 - [Desenvolvimento do frontend: estrutura, rotas, testes e build](https://github.com/GustavoAlot/alotofcash/blob/8548cb4050095dc1211f61cb4fd476cf76f8f36e/README.md)
 - [Demonstração pública, publicação e atualização dos prints](https://github.com/GustavoAlot/alotofcash/blob/8548cb4050095dc1211f61cb4fd476cf76f8f36e/docs/portfolio.md)
